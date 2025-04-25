@@ -32,6 +32,10 @@ public class SoccerMatch implements Comparable<SoccerMatch>, Match {
         matchHistory.put(lastUpdate, newScore);
     }
 
+    public Score getLastScore () {
+        return score;
+    }
+
 
     public String getMatchId() {
         return home + "-" + away;

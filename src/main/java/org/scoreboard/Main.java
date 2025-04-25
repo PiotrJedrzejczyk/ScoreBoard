@@ -15,24 +15,30 @@ public class Main {
         ScoreBoard boardDao = new SoccerScoreBoard();
 
         Match gameid = new SoccerMatch(home, away);
-        boardDao.startGame(gameid);
         Match gameid2 = new SoccerMatch("C", "D");
-        boardDao.startGame(gameid2);
-        boardDao.updateScore(gameid, new SoccerScore(new int[]{1,0}));
-        System.out.println(boardDao.getGames());
-        boardDao.updateScore(gameid, new SoccerScore(new int[]{2,0}));
-        System.out.println(boardDao.getGames());
-        boardDao.updateScore(gameid2, new SoccerScore(new int[]{1,0}));
-        System.out.println(boardDao.getGames());
-        boardDao.updateScore(gameid, new SoccerScore(new int[]{2,1}));
-        System.out.println(boardDao.getGames());
-        boardDao.updateScore(gameid2, new SoccerScore(new int[]{1,1}));
-        System.out.println(boardDao.getGames());
-        boardDao.updateScore(gameid, new SoccerScore(new int[]{2,2}));
-        System.out.println(boardDao.getGames());
-        boardDao.updateScore(gameid2, new SoccerScore(new int[]{2,1}));
-        System.out.println(boardDao.getGames());
-        boardDao.finishGame(gameid);
-        System.out.println(boardDao.getGames());
+        try {
+            boardDao.startGame(gameid);
+
+            boardDao.startGame(gameid);
+            boardDao.startGame(gameid2);
+            boardDao.updateScore(gameid, new SoccerScore(new int[]{1, 0}));
+            System.out.println(boardDao.getGames());
+            boardDao.updateScore(gameid, new SoccerScore(new int[]{2, 0}));
+            System.out.println(boardDao.getGames());
+            boardDao.updateScore(gameid2, new SoccerScore(new int[]{1, 0}));
+            System.out.println(boardDao.getGames());
+            boardDao.updateScore(gameid, new SoccerScore(new int[]{2, 1}));
+            System.out.println(boardDao.getGames());
+            boardDao.updateScore(gameid2, new SoccerScore(new int[]{1, 1}));
+            System.out.println(boardDao.getGames());
+            boardDao.updateScore(gameid, new SoccerScore(new int[]{2, 2}));
+            System.out.println(boardDao.getGames());
+            boardDao.updateScore(gameid2, new SoccerScore(new int[]{2, 1}));
+            System.out.println(boardDao.getGames());
+            boardDao.finishGame(gameid);
+            System.out.println(boardDao.getGames());
+        } catch ( Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

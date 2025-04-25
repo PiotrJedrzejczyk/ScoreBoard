@@ -1,5 +1,9 @@
 package org.scoreboard.soccerImplementation;
 
+import org.scoreboard.exceptions.BoardException;
+import org.scoreboard.exceptions.IncorrectScoreProvided;
+import org.scoreboard.exceptions.MatchAlreadyStartedException;
+import org.scoreboard.exceptions.MatchNotFoundException;
 import org.scoreboard.interfaces.Match;
 import org.scoreboard.interfaces.Score;
 import org.scoreboard.interfaces.ScoreBoard;
@@ -18,26 +22,36 @@ public class SoccerScoreBoard implements ScoreBoard {
     }
 
     @Override
-    public void startGame(Match match) {
+    public void startGame(Match match) throws BoardException {
+        if (boardStore.get(match.getMatchId()) != null)
+            throw new MatchAlreadyStartedException(match.getMatchId() + " already started");
 
         boardStore.put(match.getMatchId(), (SoccerMatch) match);
     }
 
     @Override
-    public void updateScore(Match game, Score score) {
+    public void updateScore(Match game, Score score) throws BoardException {
         SoccerMatch match = boardStore.get(game.getMatchId());
         if (match == null ) {
-            System.out.println(game.getMatchId() + " not found.");
+            throw new MatchNotFoundException(game.getMatchId() + " not found.");
         } else {
+            /*
+            * Check score content : cannot be lower than the last
+            * */
+            SoccerScore lastScore = (SoccerScore) game.getLastScore();
+            int lastScoreCount =lastScore.getAwayScore()+lastScore.getHomeScore();
+            int newScoreCount = ((SoccerScore)score).getAwayScore() + ((SoccerScore)score).getHomeScore();
+            if (newScoreCount <= lastScoreCount)
+                throw new IncorrectScoreProvided("Score for " + game.getMatchId() + " is incorrect.");
             match.updateScore(score);
         }
     }
 
     @Override
-    public void finishGame(Match game) {
+    public void finishGame(Match game) throws BoardException {
         SoccerMatch match = boardStore.get(game.getMatchId());
         if (match == null ) {
-            System.out.println(game.getMatchId() + " not found.");
+            throw new MatchNotFoundException(game.getMatchId() + " not found.");
         } else {
             boardStore.remove(game.getMatchId());
         }
