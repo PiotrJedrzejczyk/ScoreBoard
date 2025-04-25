@@ -45,7 +45,7 @@ public class EventFeed extends Thread{
             boardDao.startGame(game);
             for (int i = 0; i < 10; i++) {
                 boardDao.updateScore(game, simulateScore((SoccerScore) game.getLastScore()));
-                Thread.sleep((long)(Math.random()*1500));
+                Thread.sleep((long)(Math.random()*2500));
             }
             boardDao.finishGame(game);
 
