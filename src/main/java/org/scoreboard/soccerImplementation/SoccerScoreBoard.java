@@ -13,6 +13,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+/*
+* Score Board implementation for Soccer games. it is leveraging HashMap to store the data of all matches
+* and their scores.
+* */
+
 public class SoccerScoreBoard implements ScoreBoard {
 
     private HashMap<String, SoccerMatch> boardStore;

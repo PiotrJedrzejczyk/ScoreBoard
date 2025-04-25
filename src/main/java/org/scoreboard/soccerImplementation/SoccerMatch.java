@@ -5,6 +5,12 @@ import org.scoreboard.interfaces.Score;
 
 import java.util.HashMap;
 
+/*
+* This is a Soccer match implementation. assumption here is that the team as represented by simple String.
+* This implementation uses SoccerScore implementation and it provides a custom compare function,
+* to address one of the exercise requirements.
+* */
+
 public class SoccerMatch implements Comparable<SoccerMatch>, Match {
     private String away;
     private String home;

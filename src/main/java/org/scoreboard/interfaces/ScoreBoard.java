@@ -4,6 +4,10 @@ import org.scoreboard.exceptions.BoardException;
 
 import java.util.List;
 
+/*
+* Interface provides key functions to interact with score board irrespectively of the type of games or data store used.
+* */
+
 public interface ScoreBoard {
 
     public void startGame(Match match) throws BoardException;
