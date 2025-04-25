@@ -41,6 +41,12 @@ public class SoccerScoreBoard implements ScoreBoard {
             throw new MatchNotFoundException(game.getMatchId() + " not found.");
         } else {
             /*
+            * Scores cannot contain negative numbers
+            * */
+            if(((SoccerScore)score).getHomeScore() < 0 ||
+                    ((SoccerScore)score).getAwayScore()<0    )
+                throw new IncorrectScoreProvided("Score cannot be lower then zero.");
+            /*
             * Check score content : cannot be lower than the last
             * */
             SoccerScore lastScore = (SoccerScore) game.getLastScore();
