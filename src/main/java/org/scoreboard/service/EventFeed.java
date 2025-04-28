@@ -1,7 +1,7 @@
 package org.scoreboard.service;
 
 /*
-* This is a simple implementation of the mock up of score feed service for a single game
+* This is a simple implementation of the mock up of score feed service for a single match
 * */
 
 import org.scoreboard.interfaces.Match;
@@ -42,12 +42,15 @@ public class EventFeed extends Thread{
     public void run () {
         try {
             Match game = new SoccerMatch(home, away);
-            boardDao.startGame(game);
+            boardDao.startMatch(game);
+            /*
+            * Below loop generates a random score for a match
+            * */
             for (int i = 0; i < 10; i++) {
                 boardDao.updateScore(game, simulateScore((SoccerScore) game.getLastScore()));
-                Thread.sleep((long)(Math.random()*2500));
+                Thread.sleep((long)(Math.random()*5000));
             }
-            boardDao.finishGame(game);
+            boardDao.finishMatch(game);
 
         } catch ( Exception e) {
             System.out.println(e.toString());

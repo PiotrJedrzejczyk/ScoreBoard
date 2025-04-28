@@ -2,8 +2,6 @@ package org.scoreboard.service;
 
 import org.scoreboard.interfaces.ScoreBoard;
 import org.scoreboard.soccerImplementation.SoccerMatch;
-import org.scoreboard.soccerImplementation.SoccerScore;
-import org.scoreboard.soccerImplementation.SoccerScoreBoard;
 
 import javax.swing.*;
 import java.util.List;
@@ -31,8 +29,8 @@ public class SimpleUI extends JFrame  {
     }
 
     public String getGameString () {
-        if (board.getGames().isEmpty()) return "No games in progress";
-        List<SoccerMatch> games = board.getGames();
+        if (board.getMatches().isEmpty()) return "No games in progress";
+        List<SoccerMatch> games = board.getMatches();
         String result = "";
         for (int i = 0 ; i< games.size(); i++) {
             result += games.get(i);

@@ -34,7 +34,7 @@ public class Main {
             eventFeed5.start();
 
             Thread.sleep(100);
-            while (!boardDao.getGames().isEmpty()) {
+            while (!boardDao.getMatches().isEmpty()) {
                 ui.updateText();
                 Thread.sleep(100);
             }

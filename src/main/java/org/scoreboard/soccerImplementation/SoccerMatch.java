@@ -12,16 +12,16 @@ import java.util.HashMap;
 * */
 
 public class SoccerMatch implements Comparable<SoccerMatch>, Match {
+
     private String away;
     private String home;
-    private SoccerScore score;
-    private HashMap<Long, Score> matchHistory;
+    private SoccerScore score; // last score
+    private HashMap<Long, Score> matchHistory; // no used in this implementation however could a base for some future game statistics
+    private long lastUpdate; // last score update in milliseconds
 
     public long getLastUpdate() {
         return lastUpdate;
     }
-
-    private long lastUpdate; // last score update in milliseconds
 
     public SoccerMatch(String home, String away) {
         this.away = away;
@@ -47,6 +47,9 @@ public class SoccerMatch implements Comparable<SoccerMatch>, Match {
         return home + "-" + away;
     }
 
+    /*
+    * Customer compateTo method that address the requirement around sorting scores on the board.
+    * */
     @Override
     public int compareTo(SoccerMatch match) {
 

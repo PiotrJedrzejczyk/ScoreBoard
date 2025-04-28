@@ -1,7 +1,7 @@
 package org.scoreboard.interfaces;
 
 /*
-* Interface providing high level functions to handle game manipulations.
+* Interface providing high level functions to handle match manipulations.
 * */
 
 public interface Match {

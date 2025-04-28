@@ -15,7 +15,7 @@ import java.util.List;
 
 /*
 * Score Board implementation for Soccer games. it is leveraging HashMap to store the data of all matches
-* and their scores.
+* and their scores. HashMap key is a concatenation of team names.
 * */
 
 public class SoccerScoreBoard implements ScoreBoard {
@@ -27,7 +27,7 @@ public class SoccerScoreBoard implements ScoreBoard {
     }
 
     @Override
-    public void startGame(Match match) throws BoardException {
+    public void startMatch(Match match) throws BoardException {
         if (boardStore.get(match.getMatchId()) != null)
             throw new MatchAlreadyStartedException(match.getMatchId() + " already started");
 
@@ -59,7 +59,7 @@ public class SoccerScoreBoard implements ScoreBoard {
     }
 
     @Override
-    public void finishGame(Match game) throws BoardException {
+    public void finishMatch(Match game) throws BoardException {
         SoccerMatch match = boardStore.get(game.getMatchId());
         if (match == null ) {
             throw new MatchNotFoundException(game.getMatchId() + " not found.");
@@ -68,8 +68,12 @@ public class SoccerScoreBoard implements ScoreBoard {
         }
     }
 
+    /*
+    * As per the requirements list of games is sorted  by a total score of both team,
+    * in case of a tie, recently updates match is presented.
+    * */
     @Override
-    public List getGames() {
+    public List getMatches() {
         List<SoccerMatch> list = new ArrayList<>(boardStore.values());
         Collections.sort(list);
         return list;
