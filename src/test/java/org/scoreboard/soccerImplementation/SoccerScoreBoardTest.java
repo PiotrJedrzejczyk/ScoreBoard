@@ -17,9 +17,9 @@ class SoccerScoreBoardTest {
         try {
             Match match = new SoccerMatch("A", "B") ;
 
-            soccerScoreBoard.startGame(match);
+            soccerScoreBoard.startMatch(match);
             //starting match twice
-            soccerScoreBoard.startGame(match);
+            soccerScoreBoard.startMatch(match);
 
         } catch (Exception e ) {
            exception = e;
@@ -34,10 +34,10 @@ class SoccerScoreBoardTest {
         try {
             Match match = new SoccerMatch("A", "B") ;
 
-            soccerScoreBoard.startGame(match);
+            soccerScoreBoard.startMatch(match);
             //finishing match twice
-            soccerScoreBoard.finishGame(match);
-            soccerScoreBoard.finishGame(match);
+            soccerScoreBoard.finishMatch(match);
+            soccerScoreBoard.finishMatch(match);
 
         } catch (Exception e ) {
             exception = e;
@@ -52,7 +52,7 @@ class SoccerScoreBoardTest {
         try {
             Match match = new SoccerMatch("A", "B") ;
 
-            soccerScoreBoard.startGame(match);
+            soccerScoreBoard.startMatch(match);
             //updating on existing match twice
             soccerScoreBoard.updateScore(
                     new SoccerMatch("C", "D"),
@@ -72,7 +72,7 @@ class SoccerScoreBoardTest {
         try {
             Match match = new SoccerMatch("A", "B") ;
 
-            soccerScoreBoard.startGame(match);
+            soccerScoreBoard.startMatch(match);
             soccerScoreBoard.updateScore(
                     match,
                     new SoccerScore(new int [] {0,1}));
@@ -93,7 +93,7 @@ class SoccerScoreBoardTest {
         try {
             Match match = new SoccerMatch("A", "B") ;
 
-            soccerScoreBoard.startGame(match);
+            soccerScoreBoard.startMatch(match);
             soccerScoreBoard.updateScore(
                     match,
                     new SoccerScore(new int [] {0,1}));
